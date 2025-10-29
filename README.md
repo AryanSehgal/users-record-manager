@@ -38,3 +38,11 @@ A high-performance, interactive **User Records Manager** built in **Next.js 15**
    ```bash
    git clone https://github.com/AryanSehgal/user-records-manager.git
    cd user-records-manager
+2. Install dependencies:  
+   ```bash
+   npm install
+3. Start dev server:  
+   ```bash
+   npm run dev
+4. Open http://localhost:3000 in your browser.
+
