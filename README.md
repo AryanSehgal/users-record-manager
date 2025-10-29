@@ -4,7 +4,7 @@ A high-performance, interactive **User Records Manager** built in **Next.js 15**
 
 ## **Demo**
 
-[View Live Project](https://users-record-manager-esovscnsc-aryan-sehgals-projects.vercel.app/)
+[View Live Project](https://users-record-manager.vercel.app)
 
 ---
 
