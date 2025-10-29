@@ -64,6 +64,20 @@ A high-performance, interactive **User Records Manager** built in **Next.js 15**
 
 ## **Screenshots and screen recordings**
 
+Loading State
+
+<img width="1512" height="982" alt="Screenshot 2025-10-29 at 5 06 35 PM" src="https://github.com/user-attachments/assets/679e4403-4c23-448c-b4ce-3bfad90a3e96" />
+
+Error State
+
+<img width="1512" height="982" alt="Screenshot 2025-10-29 at 5 08 19 PM" src="https://github.com/user-attachments/assets/15acc953-d2f2-450e-85f0-5c8650135e42" />
+
+Table View
+
+<img width="1512" height="982" alt="Screenshot 2025-10-29 at 5 10 03 PM" src="https://github.com/user-attachments/assets/10366077-95a6-4e08-bca3-75de7e63eeb3" />
+
+UX Screen Recording
+
 
 
 ---
@@ -71,4 +85,5 @@ A high-performance, interactive **User Records Manager** built in **Next.js 15**
 ## **Author**
 
 Aryan Sehgal – Frontend Engineer
+
 [LinkedIn](https://www.linkedin.com/in/aryansehgal2001/) | [Github](https://github.com/AryanSehgal)
