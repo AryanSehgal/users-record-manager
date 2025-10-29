@@ -32,7 +32,7 @@ export const HealthFilter = ({
     setFilters(prev => {
       const newHealthFilters = prev.health?.includes(healthStatus)
         ? prev.health?.filter(status => status !== healthStatus)
-        : [...prev.health, healthStatus];
+        : [...(prev.health ?? []), healthStatus];
       return { ...prev, health: newHealthFilters };
     });
   };

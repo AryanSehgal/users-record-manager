@@ -3,9 +3,7 @@
   width: 100%;
   border-collapse: collapse;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin-top: 1rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
   overflow: hidden;
   background-color: #fff;
 }
@@ -85,4 +83,55 @@
   overflow-y: auto;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
+}
+
+.table-controls{
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem; 
+}
+
+/* The search input */
+.table-controls input[type="text"] {
+  flex: 1;
+  max-width: 320px;
+  padding: 0.6rem 1rem;
+  font-size: 0.95rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  background-color: #fff;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.table-controls input[type="text"]:focus {
+  border-color: #1976d2;
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.15);
+}
+
+.table-controls input[type="text"]::placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+
+/* Search button area (if you have one) */
+.table-controls button {
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  padding: 0.55rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.table-controls button:hover {
+  background-color: #125ca1;
+}
+
+.table-controls button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }

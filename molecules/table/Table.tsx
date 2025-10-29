@@ -47,12 +47,23 @@ export const Table = (): ReactElement => {
     });
   };
 
-  const handleMarkAsViewed = () => {
+  const toggleViewStatus = () => {
     if (selectedIds.size > 0) {
-      console.log('Marking as viewed:', [...selectedIds]);
-      const newData = data.map(row =>
-        selectedIds.has(row.id) ? { ...row, viewed: true } : row
-      );
+      const areSelectedRowsViewed = data.filter(row=>selectedIds.has(row.id)).every(row => row.viewed === true);
+      let newData = [];
+
+      if(areSelectedRowsViewed){
+        newData = data.map(row =>
+          selectedIds.has(row.id) ? { ...row, viewed: false } : row
+        );
+        console.log('Marking as unviewed:', [...selectedIds]);
+      }else{
+        newData = data.map(row =>
+          selectedIds.has(row.id) ? { ...row, viewed: true } : row
+        );
+        console.log('Marking as viewed:', [...selectedIds]);
+      }
+
       setData(newData);
       setSelectedIds(new Set()); // Clear selection after action
     }
@@ -74,8 +85,8 @@ export const Table = (): ReactElement => {
           onChange={(e) => setSearchTerm(e.target.value)}
           aria-label="Search users"
         />
-        <button onClick={handleMarkAsViewed} disabled={selectedIds.size === 0}>
-          Mark Selected as Viewed
+        <button onClick={toggleViewStatus} disabled={selectedIds.size === 0}>
+          Toggle View Status
         </button>
       </div>
 
