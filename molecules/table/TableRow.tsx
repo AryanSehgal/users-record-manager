@@ -1,6 +1,6 @@
 import { ReactElement, CSSProperties } from 'react';
 import { TableRowProps as BaseTableRowProps } from './types';
-import { Character } from '@/lib/types';
+import { User } from '@/lib/types';
 
 export interface TableRowProps<T> extends BaseTableRowProps<T>
 {
@@ -13,7 +13,7 @@ export interface TableRowProps<T> extends BaseTableRowProps<T>
   };
 } 
 
-export const TableRow =  ({ index, style, ariaAttributes, data, selectedIds, handleSelectRow }: TableRowProps<Character>): ReactElement => {
+export const TableRow =  ({ index, style, ariaAttributes, data, selectedIds, handleSelectRow }: TableRowProps<User>): ReactElement => {
   const row = data[index];
   const isSelected = selectedIds.has(row.id);
 
@@ -23,7 +23,7 @@ export const TableRow =  ({ index, style, ariaAttributes, data, selectedIds, han
         type="checkbox"
         checked={isSelected}
         onChange={(e) => handleSelectRow(row.id, e.target.checked)}
-        aria-label={`Select character ${row.name}`}
+        aria-label={`Select user ${row.name}`}
         aria-posinset={ariaAttributes['aria-posinset']}
         aria-setsize={ariaAttributes['aria-setsize']}
       />

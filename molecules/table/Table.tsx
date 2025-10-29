@@ -4,7 +4,7 @@ import { useTableData } from './hooks/useTableData';
 import { TableRow } from './TableRow';
 import { HealthFilter } from './HealthFilter';
 import { SortIcon } from './SortIcon';
-import { Character } from '@/lib/types';
+import { User } from '@/lib/types';
 import { TableRowProps } from './types';
 import './table.css';
 
@@ -21,7 +21,7 @@ export const Table = (): ReactElement => {
     requestSort,
     sortConfig,
     setData
-  } = useTableData<Character>('/api/users');
+  } = useTableData<User>('/api/users');
 
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
   const listRef = useListRef(null);
@@ -72,7 +72,7 @@ export const Table = (): ReactElement => {
           placeholder="Search by name or location..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          aria-label="Search characters"
+          aria-label="Search users"
         />
         <button onClick={handleMarkAsViewed} disabled={selectedIds.size === 0}>
           Mark Selected as Viewed
@@ -80,14 +80,14 @@ export const Table = (): ReactElement => {
       </div>
 
       <div className="table-wrapper" role="region" aria-live="polite" tabIndex={0}>
-        <table className="character-table" style={{ width: '100%' }}>
+        <div className="users-table" style={{ width: '100%' }}>
           <div className="table-header">
             <input
               type="checkbox"
               onChange={handleSelectAll}
               checked={isSelectedAll}
               aria-label="Select all rows"
-              aria-controls="character-list"
+              aria-controls="user-list"
               className="table-header-cell "
             />
             <span className="table-header-cell">Name</span>
@@ -103,8 +103,8 @@ export const Table = (): ReactElement => {
             </span>
             <span className="table-header-cell">Viewed</span>
           </div>
-        </table>
-        <List<TableRowProps<Character>>
+        </div>
+        <List<TableRowProps<User>>
           rowCount={sortedAndFilteredData.length}
           rowHeight={40}
           rowComponent={TableRow}  

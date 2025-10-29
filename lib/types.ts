@@ -1,6 +1,6 @@
 import {HealthStatus, Location} from './enums';
 
-export interface Character {
+export interface User {
   id: string;
   name: string;
   location: Location;
