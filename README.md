@@ -46,3 +46,29 @@ A high-performance, interactive **User Records Manager** built in **Next.js 15**
    npm run dev
 4. Open http://localhost:3000 in your browser.
 
+---
+
+## **Usage**
+
+1. Select users using the checkboxes in the first column.
+
+2. Filter by Health using the dropdown in the header.
+
+3. Search by Name or Location in real-time.
+
+4. Sort by Power using the chevron icon.
+
+5. Mark selected rows as viewed or unviewed and check the console for selected IDs.
+
+---
+
+## **Screenshots and screen recordings**
+
+
+
+---
+
+## **Author**
+
+Aryan Sehgal – Frontend Engineer
+[LinkedIn](https://www.linkedin.com/in/aryansehgal2001/) | [Github](https://github.com/AryanSehgal)
