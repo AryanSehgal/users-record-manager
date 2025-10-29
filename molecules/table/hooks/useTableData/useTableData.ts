@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useDeferredValue } from 'react';
 import { UseTableDataReturn, TableFilters, SortConfig} from '../../types';
 
 export const useTableData = <T extends Record<string, any>>(fetchUrl: string): UseTableDataReturn<T> => {
@@ -8,6 +8,9 @@ export const useTableData = <T extends Record<string, any>>(fetchUrl: string): U
   const [filters, setFilters] = useState<TableFilters>({});
   const [searchTerm, setSearchTerm] = useState('');
   const [sortConfig, setSortConfig] = useState<SortConfig<T>>({ key: null, direction: 'asc' });
+
+  // 👇 React will "defer" the actual value used in filtering until input stabilizes
+  const deferredSearchTerm = useDeferredValue(searchTerm);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,12 +42,12 @@ export const useTableData = <T extends Record<string, any>>(fetchUrl: string): U
     }
 
     // Apply search filter (simple text search across all string fields)
-    if (searchTerm) {
+    if (deferredSearchTerm) {
       filtered = filtered.filter(row =>
         Object.values(row).some(
           val =>
             typeof val === 'string' &&
-            val.toLowerCase().includes(searchTerm.toLowerCase())
+            val.toLowerCase().includes(deferredSearchTerm.toLowerCase())
         )
       );
     }
@@ -62,7 +65,7 @@ export const useTableData = <T extends Record<string, any>>(fetchUrl: string): U
     }
 
     return filtered;
-  }, [data, filters, searchTerm, sortConfig]);
+  }, [data, filters, deferredSearchTerm, sortConfig]);
 
   const requestSort = (key: keyof T) => {
     setSortConfig(prev => ({
