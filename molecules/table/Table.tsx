@@ -5,8 +5,8 @@ import { TableRow } from './TableRow';
 import { HealthFilter } from './HealthFilter';
 import { SortIcon } from './SortIcon';
 import { Character } from '@/lib/types';
-import {TableRowProps} from './types';
-
+import { TableRowProps } from './types';
+import './table.css';
 
 export const Table = (): ReactElement => {
   const {
@@ -80,32 +80,29 @@ export const Table = (): ReactElement => {
       </div>
 
       <div className="table-wrapper" role="region" aria-live="polite" tabIndex={0}>
-        <table className="character-table">
-          <thead>
-            <tr>
-              <th scope="col">
-                <input
-                  type="checkbox"
-                  onChange={handleSelectAll}
-                  checked={isSelectedAll}
-                  aria-label="Select all rows"
-                  aria-controls="character-list"
-                />
-              </th>
-              <th scope="col">Name</th>
-              <th scope="col">Location</th>
-              <th scope="col">
-                Health
-                <HealthFilter filters={filters} setFilters={setFilters} />
-              </th>
-              <th scope="col" aria-sort={sortConfig.key === 'power' ? `${sortConfig.direction}ending` : 'none'}>
-                <button className="sort-button" onClick={() => requestSort('power')} aria-label="Sort by power level">
-                  Power <SortIcon direction={sortConfig.key === 'power' ? sortConfig.direction : null} />
-                </button>
-              </th>
-              <th scope="col">Viewed</th>
-            </tr>
-          </thead>
+        <table className="character-table" style={{ width: '100%' }}>
+          <div className="table-header">
+            <input
+              type="checkbox"
+              onChange={handleSelectAll}
+              checked={isSelectedAll}
+              aria-label="Select all rows"
+              aria-controls="character-list"
+              className="table-header-cell "
+            />
+            <span className="table-header-cell">Name</span>
+            <span className="table-header-cell">Location</span>
+            <span className="table-header-cell">
+              Health
+              <HealthFilter filters={filters} setFilters={setFilters} />
+            </span>
+            <span className="table-header-cell" aria-sort={sortConfig.key === 'power' ? `${sortConfig.direction}ending` : 'none'}>
+              <button className="sort-button" onClick={() => requestSort('power')} aria-label="Sort by power level">
+                Power <SortIcon direction={sortConfig.key === 'power' ? sortConfig.direction : null} />
+              </button>
+            </span>
+            <span className="table-header-cell">Viewed</span>
+          </div>
         </table>
         <List<TableRowProps<Character>>
           rowCount={sortedAndFilteredData.length}
