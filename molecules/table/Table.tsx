@@ -72,9 +72,26 @@ export const Table = (): ReactElement => {
   const isSelectedAll = selectedIds.size > 0 && selectedIds.size === sortedAndFilteredData.length;
   const isIndeterminate = selectedIds.size > 0 && selectedIds.size < sortedAndFilteredData.length;
 
-  if (loading) return <div aria-live="polite">Loading...</div>;
-  if (error) return <div aria-live="assertive" role="alert">Error: {error}</div>;
+  if (loading) {
+    return (
+      <div className="loading-container" aria-live="polite">
+        <div className="spinner"></div>
+        <p>Loading data, please wait...</p>
+      </div>
+    );
+  }
 
+  if (error ) {
+    return (
+      <div className="error-container" aria-live="assertive" role="alert">
+        <p>⚠️ Something went wrong:</p>
+        <pre>{error}</pre>
+      </div>
+    );
+  }
+
+  // Future Scope: Take a columns config as a prop and render columns using it to make Table compnoent abolutely generic and resuable.
+  // Currently the logic for rendering the table and logic specific to users table are coupled together. Pardon 😔
   return (
     <div className="table-container">
       <div className="table-controls">
